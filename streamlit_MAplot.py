@@ -110,8 +110,9 @@ ggsave("MAplot.png", plot = MAplotoutput ,width = 4.25, height = 3, dpi = 300)
 st.code(code1, language='R')
 process2 = subprocess.Popen(["Rscript", "MAplot.R", str(adjp), str(foldchangeup), str(foldchangedn)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 # Convert the DataFrame to a CSV string and pass it to the subprocess
-csv_string = upload_file_df.to_csv(index=False, sep=" ", quoting=1, line_terminator="\n")
+csv_string = upload_file_df.to_csv(index=False, sep=" ", quoting=1)
 result2, error2 = process2.communicate(input=csv_string)
+
 
 #image = Image.open('MAplot.png')
 #st.image(image)
