@@ -16,6 +16,7 @@ R packages used:
 - `dplyr`
 - `ggplot2`
 - `tidyverse`
+- `readr`
 ''')
 
 uploaded_file = st.sidebar.file_uploader("Upload your input txt file", type=["txt"])
@@ -36,6 +37,7 @@ with st.expander('See code'):
 library(ggplot2)
 library(dplyr)
 library(tidyverse)
+library(readr)
   
 result_table <- read_delim(uploaded_file)
 result_table[is.na(result_table)] <- 1
