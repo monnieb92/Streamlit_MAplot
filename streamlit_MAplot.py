@@ -18,7 +18,7 @@ R packages used:
 - `tidyverse`
 ''')
 
-uploaded_file = st.sidebar.file_uploader("Upload your input CSV file", type=["csv"])
+uploaded_file = st.sidebar.file_uploader("Upload your input txt file", type=["txt"])
 st.write('This is the path to the csv file from DESEQ2', uploaded_file)
 
 adjp = st.number_input('adjusted p-value')
