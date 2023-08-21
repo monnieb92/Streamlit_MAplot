@@ -1,16 +1,4 @@
 library(ggplot2)
-library(tidyverse)
-library(dplyr)
-
-result_table <- upload_file_df
-result_table[is.na(result_table)] <- 1
-
-
-result_table_filtered <- result_table %>% 
-  dplyr::mutate(FoldChange = ((2^(abs(log2FoldChange)))*sign(log2FoldChange))) %>% 
-  transform( category = ifelse((padj <= adjp &  FoldChange <= -foldchangedn), "Down", ifelse((padj <= adjp &  FoldChange >= foldchangeup), "Up",  "NS")))
-
-count_result <- dplyr::count(result_table_filtered, category)
 
 theme_monica <- function(){
   theme_classic() %+replace%    #replace elements we want to change
@@ -60,7 +48,5 @@ MAplotoutput <- ggplot(result_table_filtered, aes(y = log2FoldChange, x = baseMe
   #scale_x_continuous(breaks=seq(0, 650, 50), limits=c(0,655)) 
   scale_x_log10(breaks = c(10,100,1000,10000)) +
   expand_limits(x=c(0,10000))
-
-print(MAplotoutput)
 
 ggsave("MAplot.png", plot = MAplotoutput ,width = 4.25, height = 3, dpi = 300)
