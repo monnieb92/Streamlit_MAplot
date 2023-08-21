@@ -2,7 +2,7 @@ library(ggplot2)
 library(tidyverse)
 library(dplyr)
 
-result_table <- read_tsv(uploaded_file)
+result_table <- read_delim(uploaded_file)
 result_table[is.na(result_table)] <- 1
 
 result_table_filtered <- result_table %>% 
