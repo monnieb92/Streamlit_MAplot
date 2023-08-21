@@ -107,13 +107,11 @@ ggsave("MAplot.png", plot = MAplotoutput ,width = 4.25, height = 3, dpi = 300)
 
 st.code(code1, language='R')
 
-uploaded_file_bytes = None  # Initialize the variable outside the if block
-
-if uploaded_file is not None: 
+if uploaded_file is not None:
     # Convert to BytesIO object
     uploaded_file_bytes = BytesIO(uploaded_file.read())
+    uploaded_file_bytes.seek(0)  # Reset the read pointer to the beginning
 
-# Rest of your code
 
 process2 = subprocess.Popen(["Rscript", "MAplot.R",str(adjp), str(foldchangeup), str(foldchangedn)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 result2, error2 = process2.communicate(input=uploaded_file_bytes.read().decode())
