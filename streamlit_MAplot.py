@@ -23,7 +23,7 @@ R packages used:
 uploaded_file = st.sidebar.file_uploader("Upload your input txt file", type=["txt"])
 st.write('This is the path to the csv file from DESEQ2', uploaded_file)
 
-upload_file_df = pd.read.csv(uploaded_file, sep = " ")
+upload_file_df = pd.read_csv(uploaded_file, sep = " ")
 
 adjp = st.number_input('adjusted p-value')
 st.write('The current adjusted p-value is ', adjp)
