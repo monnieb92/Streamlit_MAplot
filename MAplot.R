@@ -1,5 +1,7 @@
 library(ggplot2)
 
+result_table_filtered <- read.csv("result_table_filtered.csv", sep = " ")
+
 theme_monica <- function(){
   theme_classic() %+replace%    #replace elements we want to change
     #font <- "Times", 
