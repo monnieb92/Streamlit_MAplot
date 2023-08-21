@@ -4,6 +4,7 @@ import streamlit as st
 import subprocess
 from PIL import Image
 import pandas as pd
+from io import StringIO
 
 st.header('Differential Analysis of DESEQ2 Data')
 
@@ -23,7 +24,8 @@ R packages used:
 uploaded_file = st.sidebar.file_uploader("Upload your input txt file", type=["txt"])
 st.write('This is the path to the csv file from DESEQ2', uploaded_file)
 
-upload_file_df = pd.read_csv(uploaded_file, sep = " ")
+if uploaded_file is not None:
+    upload_file_df = pd.read_csv(uploaded_file, sep=" ")
 
 adjp = st.number_input('adjusted p-value')
 st.write('The current adjusted p-value is ', adjp)
@@ -106,11 +108,10 @@ ggsave("MAplot.png", plot = MAplotoutput ,width = 4.25, height = 3, dpi = 300)
  '''
 
 st.code(code1, language='R')
-
-process2 = subprocess.Popen(["Rscript", "MAplot.R",str(upload_file_df), str(adjp), str(foldchangeup), str(foldchangedn)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-result2 = process2.communicate()
-st.write("Count Results:")
-st.write(result2)
+process2 = subprocess.Popen(["Rscript", "MAplot.R", str(adjp), str(foldchangeup), str(foldchangedn)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+# Convert the DataFrame to a CSV string and pass it to the subprocess
+csv_string = upload_file_df.to_csv(index=False, sep=" ", quoting=1, line_terminator="\n")
+result2, error2 = process2.communicate(input=csv_string)
 
 #image = Image.open('MAplot.png')
 #st.image(image)
