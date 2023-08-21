@@ -56,8 +56,7 @@ process1 = subprocess.Popen(["Rscript", "DifferentialTable.R", str(adjp), str(fo
 # Convert the DataFrame to a CSV string and pass it to the subprocess
 csv_string = upload_file_df.to_csv(index=False, sep=" ", quoting=1)
 result1, error1 = process1.communicate(input=csv_string)
-st.write("Count Results:")
-st.write(result1)
+
 # Check if the process completed successfully
 if process1.returncode == 0:
     # ... (your existing code to display the count results)
@@ -66,6 +65,8 @@ if process1.returncode == 0:
 else:
     st.write("R Script Error (Differential Analysis):", error1)
 
+st.write("Count Results:")
+st.write(result1)
 
 
 st.subheader('2. Plotting differential analysis')
