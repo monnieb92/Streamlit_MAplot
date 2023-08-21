@@ -39,7 +39,7 @@ library(dplyr)
 library(tidyverse)
 library(readr)
   
-result_table <- read_delim(uploaded_file)
+result_table <- read_tsv(uploaded_file)
 result_table[is.na(result_table)] <- 1
 
 result_table_filtered <- result_table %>% 
