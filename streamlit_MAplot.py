@@ -39,7 +39,6 @@ st.write('The current Fold Change for down regulated is ', foldchangedn)
 st.subheader('1. Determining Differential analysis using DESEQ2')
 with st.expander('See code'):
   code1 = '''
-
 library(dplyr)
 library(tidyverse)
 
