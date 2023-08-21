@@ -44,7 +44,7 @@ result_table_filtered <- result_table %>%
   mutate(FoldChange = ((2^(abs(log2FoldChange)))*sign(log2FoldChange))) %>% 
   transform( category = ifelse((padj <= adjp &  FoldChange <= -foldchangedn), "Down", ifelse((padj <= adjp &  FoldChange >= foldchangeup), "Up",  "NS")))
 
-dplyr::count(result_table_filtered, category)
+count_resuts <- dplyr::count(result_table_filtered, category)
 
 theme_monica <- function(){
   theme_classic() %+replace%    #replace elements we want to change
@@ -102,8 +102,21 @@ ggsave("MAplot.png", plot = MAplotoutput ,width = 4.25, height = 3, dpi = 300)
  '''
 
 st.code(code1, language='R')
-process2 = subprocess.Popen(["Rscript", "plot.R"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+process2 = subprocess.Popen(["Rscript", "plot.R", str(uploaded_file),str(adjp), str(foldchangeup), str(foldchangedn)], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 result2 = process2.communicate()
+count_result
+count_result_lines = result2.split('\n')
+for line in count_result_lines:
+    if "count_result" in line:
+        count_result_str = line.split('=')[1].strip()
+        break
+
+# Convert the count_result string to a Python dictionary
+import ast
+count_result_dict = ast.literal_eval(count_result_str)
+st.write("Count Result:")
+st.write(count_result_dict)
+
 image = Image.open('MAplot.png')
 st.image(image)
 
