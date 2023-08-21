@@ -115,6 +115,6 @@ result2, error2 = process2.communicate(input=csv_string)
 st.write("Count Results:")
 st.write(result2)
 
-#image = Image.open('MAplot.png')
-#st.image(image)
+image = Image.open('MAplot.png')
+st.image(image)
 
