@@ -5,6 +5,8 @@ library(readr)
 
 uploaded_file_path <- commandArgs(TRUE)[1]
 
+uploaded_file_path <- file.path(getwd(), uploaded_file_path)
+
 result_table <- read_tsv(uploaded_file_path)
 result_table[is.na(result_table)] <- 1
 
