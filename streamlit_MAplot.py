@@ -103,7 +103,7 @@ ggsave("MAplot.png", plot = MAplotoutput ,width = 4.25, height = 3, dpi = 300)
 
 st.code(code1, language='R')
 process2 = subprocess.Popen(["Rscript", "plot.R", str(uploaded_file),str(adjp), str(foldchangeup), str(foldchangedn)], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-result2, _ = process2.communicate()
+result2 = process2.communicate()
 st.write("Count Results:")
 st.write(result2)
 
