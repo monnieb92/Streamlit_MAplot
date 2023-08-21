@@ -36,10 +36,10 @@ st.write('The current Fold Change for up regulated is ', foldchangeup)
 foldchangedn = st.number_input('Fold Change Down')
 st.write('The current Fold Change for down regulated is ', foldchangedn)
 
-st.subheader('1. Determining Differential analysis using')
+st.subheader('1. Determining Differential analysis using DESEQ2')
 with st.expander('See code'):
   code1 = '''
-library(ggplot2)
+
 library(dplyr)
 library(tidyverse)
 
@@ -51,7 +51,20 @@ result_table_filtered <- result_table %>%
   transform( category = ifelse((padj <= adjp &  FoldChange <= -foldchangedn), "Down", ifelse((padj <= adjp &  FoldChange >= foldchangeup), "Up",  "NS")))
 
 count_result <- dplyr::count(result_table_filtered, category)
+'''
+st.code(code1, language='R')
+process1 = subprocess.Popen(["Rscript", "DifferentialTable.R", str(adjp), str(foldchangeup), str(foldchangedn)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+# Convert the DataFrame to a CSV string and pass it to the subprocess
+csv_string = upload_file_df.to_csv(index=False, sep=" ", quoting=1)
+result1, error1 = process1.communicate(input=csv_string)
+st.write("Count Results:")
+st.write(result1)
 
+
+st.subheader('2. Plotting differential analysis')
+with st.expander('See code'):
+    code2 = '''
+    library(ggplot2)
 theme_monica <- function(){
   theme_classic() %+replace%    #replace elements we want to change
     #font <- "Times", 
@@ -101,20 +114,12 @@ MAplotoutput <- ggplot(result_table_filtered, aes(y = log2FoldChange, x = baseMe
   scale_x_log10(breaks = c(10,100,1000,10000)) +
   expand_limits(x=c(0,10000))
 
-print(MAplotoutput)
-
 ggsave("MAplot.png", plot = MAplotoutput ,width = 4.25, height = 3, dpi = 300)
 
  '''
-
-st.code(code1, language='R')
-process2 = subprocess.Popen(["Rscript", "MAplot.R", str(adjp), str(foldchangeup), str(foldchangedn)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-# Convert the DataFrame to a CSV string and pass it to the subprocess
-csv_string = upload_file_df.to_csv(index=False, sep=" ", quoting=1)
-result2, error2 = process2.communicate(input=csv_string)
-st.write("Count Results:")
-st.write(result2)
-
+st.code(code2, language='R')
+process2 = subprocess.Popen(["Rscript", "MAplot.R"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+result2 = process2.communicate()
 image = Image.open('MAplot.png')
 st.image(image)
 
