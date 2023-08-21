@@ -59,14 +59,9 @@ result1, error1 = process1.communicate(input=csv_string)
 
 # Check if the process completed successfully
 if process1.returncode == 0:
-    # ... (your existing code to display the count results)
-    # Now save the filtered DataFrame as a CSV file
-    result_table_filtered.to_csv("result_table_filtered.csv", index=False)
-else:
-    st.write("R Script Error (Differential Analysis):", error1)
-
-st.write("Count Results:")
-st.write(result1)
+    # Print the count_result DataFrame from code1
+    st.subheader('Count Results from code1:')
+    st.write(count_result)
 
 
 st.subheader('2. Plotting differential analysis')
