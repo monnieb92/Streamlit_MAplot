@@ -104,18 +104,8 @@ ggsave("MAplot.png", plot = MAplotoutput ,width = 4.25, height = 3, dpi = 300)
 st.code(code1, language='R')
 process2 = subprocess.Popen(["Rscript", "plot.R", str(uploaded_file),str(adjp), str(foldchangeup), str(foldchangedn)], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 result2 = process2.communicate()
-# Extract count results 
-count_result_lines = result2.split('\n')
-for line in count_result_lines:
-    if "count_result" in line:
-        count_result_str = line.split('=')[1].strip()
-        break
 
-# Convert the count_result string to a Python dictionary
-import ast
-count_result_dict = ast.literal_eval(count_result_str)
-st.write("Count Result:")
-st.write(count_result_dict)
+st.write(count_result)
 
 image = Image.open('MAplot.png')
 st.image(image)
