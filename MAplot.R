@@ -1,12 +1,10 @@
 library(ggplot2)
 library(tidyverse)
 library(dplyr)
-library(readr)
 
-uploaded_file_path <- commandArgs(TRUE)[1]
-
-result_table <- read_tsv(uploaded_file_path)
+result_table <- upload_file_df
 result_table[is.na(result_table)] <- 1
+
 
 result_table_filtered <- result_table %>% 
   dplyr::mutate(FoldChange = ((2^(abs(log2FoldChange)))*sign(log2FoldChange))) %>% 
