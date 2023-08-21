@@ -44,7 +44,7 @@ result_table_filtered <- result_table %>%
   mutate(FoldChange = ((2^(abs(log2FoldChange)))*sign(log2FoldChange))) %>% 
   transform( category = ifelse((padj <= adjp &  FoldChange <= -foldchangedn), "Down", ifelse((padj <= adjp &  FoldChange >= foldchangeup), "Up",  "NS")))
 
-count_resuts <- dplyr::count(result_table_filtered, category)
+count_result <- dplyr::count(result_table_filtered, category)
 
 theme_monica <- function(){
   theme_classic() %+replace%    #replace elements we want to change
