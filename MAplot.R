@@ -1,6 +1,7 @@
 library(ggplot2)
 library(tidyverse)
 library(dplyr)
+library(readr)
 
 result_table <- read_delim(uploaded_file)
 result_table[is.na(result_table)] <- 1
