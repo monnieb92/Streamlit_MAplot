@@ -3,6 +3,7 @@
 import streamlit as st
 import subprocess
 from PIL import Image
+import pandas as pd
 
 st.header('Differential Analysis of DESEQ2 Data')
 
@@ -22,6 +23,8 @@ R packages used:
 uploaded_file = st.sidebar.file_uploader("Upload your input txt file", type=["txt"])
 st.write('This is the path to the csv file from DESEQ2', uploaded_file)
 
+upload_file_df = pd.read.csv(uploaded_file, sep = " ")
+
 adjp = st.number_input('adjusted p-value')
 st.write('The current adjusted p-value is ', adjp)
 
@@ -37,11 +40,8 @@ with st.expander('See code'):
 library(ggplot2)
 library(dplyr)
 library(tidyverse)
-library(readr)
 
-uploaded_file_path <- commandArgs(TRUE)[1]
-
-result_table <- read_tsv(uploaded_file_path)
+result_table <- upload_file_df
 result_table[is.na(result_table)] <- 1
 
 result_table_filtered <- result_table %>% 
@@ -107,14 +107,8 @@ ggsave("MAplot.png", plot = MAplotoutput ,width = 4.25, height = 3, dpi = 300)
 
 st.code(code1, language='R')
 
-if uploaded_file is not None:
-    # Convert to BytesIO object
-    uploaded_file_bytes = BytesIO(uploaded_file.read())
-    uploaded_file_bytes.seek(0)  # Reset the read pointer to the beginning
-
-
-process2 = subprocess.Popen(["Rscript", "MAplot.R",str(adjp), str(foldchangeup), str(foldchangedn)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-result2, error2 = process2.communicate(input=uploaded_file_bytes.read().decode())
+process2 = subprocess.Popen(["Rscript", "MAplot.R",str(upload_file_df), str(adjp), str(foldchangeup), str(foldchangedn)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+result2 = process2.communicate()
 st.write("Count Results:")
 st.write(result2)
 
