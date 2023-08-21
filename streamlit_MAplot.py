@@ -116,9 +116,17 @@ MAplotoutput <- ggplot(result_table_filtered, aes(y = log2FoldChange, x = baseMe
 ggsave("MAplot.png", plot = MAplotoutput ,width = 4.25, height = 3, dpi = 300)
 
  '''
-st.code(code2, language='R')
+# Execute the R code for the second code section (plotting differential analysis)
 process2 = subprocess.Popen(["Rscript", "MAplot.R"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-result2 = process2.communicate()
-image = Image.open('MAplot.png')
-st.image(image)
+result2, error2 = process2.communicate()  # Wait for R script to complete
 
+# Display any error message from the R script
+st.write("R Script Error (Plotting):", error2)
+
+# Check if the image file was generated
+if process2.returncode == 0:
+    # If the image file was generated successfully, open and display it
+    image = Image.open('MAplot.png')
+    st.image(image)
+else:
+    st.write("Failed to generate the MA plot image.")
