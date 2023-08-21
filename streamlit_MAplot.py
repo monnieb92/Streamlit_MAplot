@@ -107,6 +107,6 @@ result2 = process2.communicate()
 st.write("Count Results:")
 st.write(result2)
 
-image = Image.open('MAplot.png')
-st.image(image)
+#image = Image.open('MAplot.png')
+#st.image(image)
 
