@@ -112,7 +112,8 @@ process2 = subprocess.Popen(["Rscript", "MAplot.R", str(adjp), str(foldchangeup)
 # Convert the DataFrame to a CSV string and pass it to the subprocess
 csv_string = upload_file_df.to_csv(index=False, sep=" ", quoting=1)
 result2, error2 = process2.communicate(input=csv_string)
-
+st.write("Count Results:")
+st.write(result2)
 
 #image = Image.open('MAplot.png')
 #st.image(image)
