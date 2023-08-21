@@ -112,7 +112,7 @@ if uploaded_file is not None:
   uploaded_file_bytes= BytesIO(upload_file.read())
 
 
-process2 = subprocess.Popen(["Rscript", "MAplot.R",str(adjp), str(foldchangeup), str(foldchangedn)], stdin=subprocess.PIPE stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+process2 = subprocess.Popen(["Rscript", "MAplot.R",str(adjp), str(foldchangeup), str(foldchangedn)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 result2, error2 = process2.communicate(input=uploaded_file_bytes.read().decode())
 st.write("Count Results:")
 st.write(result2)
