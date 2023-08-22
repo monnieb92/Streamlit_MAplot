@@ -52,10 +52,12 @@ result_table_filtered <- result_table %>%
 count_result <- dplyr::count(result_table_filtered, category)
 '''
 st.code(code1, language='R')
-# Convert the DataFrame to a CSV string and pass it to the subprocess
-csv_string = result_table_filtered.to_csv(index=False, sep=" ", quoting=1)
 process1 = subprocess.Popen(["Rscript", "DifferentialTable.R", str(adjp), str(foldchangeup), str(foldchangedn)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-result1, error1 = process1.communicate(input=csv_string)
+result1, error1 = process1.communicate()
+if process1.returncode == 0: 
+    result_table_filtered.to_csv("result_table_filtered.csv", index = FALSE)
+else: 
+    st.write('R Script Error in Differential Analysis')
     
 # Display the count_result DataFrame
 st.write("Count Results:")
