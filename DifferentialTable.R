@@ -1,7 +1,15 @@
 library(dplyr)
 library(tidyverse)
 
-result_table <- upload_file_df
+# Read command-line arguments
+args <- commandArgs(trailingOnly = TRUE)
+adjp <- as.numeric(args[1])
+foldchangeup <- as.numeric(args[2])
+foldchangedn <- as.numeric(args[3])
+input_file <- args[4]
+
+result_table <- read.csv(input_file, sep = " ")
+
 result_table[is.na(result_table)] <- 1
 
 result_table_filtered <- result_table %>% 
