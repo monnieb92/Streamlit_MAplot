@@ -3,9 +3,6 @@ library(tidyverse)
 
 # Read command-line arguments
 args <- commandArgs(trailingOnly = TRUE)
-adjp <- as.numeric(args[1])
-foldchangeup <- as.numeric(args[2])
-foldchangedn <- as.numeric(args[3])
 df <- args[4] 
 
 result_table <- read.csv(df, sep = " ")
