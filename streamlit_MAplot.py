@@ -56,16 +56,11 @@ process1 = subprocess.Popen(["Rscript", "DifferentialTable.R", str(adjp), str(fo
 result1, error1 = process1.communicate()
 if process1.returncode == 0: 
     result_table_filtered.to_csv("result_table_filtered.csv", index = FALSE)
+    st.write("Count Results Output:")
+    st.code(result1, language='r')
 else: 
     st.write('R Script Error in Differential Analysis')
     
-# Display the count_result DataFrame
-if stdout:
-    st.write("Count Results Output:")
-    st.code(stdout, language = 'r')
-else:
-    st.write("No output from the R code"
-            )
 st.subheader('2. Plotting differential analysis')
 with st.expander('See code'):
     code2 = '''
