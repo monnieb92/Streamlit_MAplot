@@ -28,6 +28,8 @@ if uploaded_file is not None:
     st.write("Uploaded file in df", upload_file_df)
 else: 
     st.write("No uploaded file for df")
+upload_file_df.to_csv("uploaded_data.csv", index=False)
+
 adjp = st.number_input('adjusted p-value')
 st.write('The current adjusted p-value is ', adjp)
 
@@ -62,8 +64,7 @@ dplyr::count(result_table_filtered, category)
     
 st.code(code1, language='R')
 csv_string = df.to_csv(index=False)
-process1 = subprocess.Popen(["Rscript", "DifferentialTable.R", str(adjp), str(foldchangeup), str(foldchangedn),
-    csv_string], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+process1 = subprocess.Popen(["Rscript", "DifferentialTable.R", str(adjp), str(foldchangeup), str(foldchangedn), "uploaded_data.csv"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 result1, error1 = process1.communicate()
 if process1.returncode == 0: 
     filtered_result = result_table_filtered.copy()
@@ -133,7 +134,7 @@ ggsave("MAplot.png", plot = MAplotoutput ,width = 4.25, height = 3, dpi = 300)
 
  '''
 # Execute the R code for the second code section (plotting differential analysis)
-process2 = subprocess.Popen(["Rscript", "MAplot.R",filtered_result.name], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+process2 = subprocess.Popen(["Rscript", "MAplot.R",filtered_result], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 result2, error2 = process2.communicate()  # Wait for R script to complete
 
 # Display any error message from the R script
