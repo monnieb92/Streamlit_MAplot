@@ -63,7 +63,7 @@ dplyr::count(result_table_filtered, category)
 '''
     
 st.code(code1, language='R')
-csv_string = df.to_csv(index=False)
+
 process1 = subprocess.Popen(["Rscript", "DifferentialTable.R", str(adjp), str(foldchangeup), str(foldchangedn), "uploaded_data.csv"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 result1, error1 = process1.communicate()
 if process1.returncode == 0: 
