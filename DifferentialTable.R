@@ -8,4 +8,5 @@ result_table_filtered <- result_table %>%
   mutate(FoldChange = ((2^(abs(log2FoldChange)))*sign(log2FoldChange))) %>% 
   transform( category = ifelse((padj <= adjp &  FoldChange <= -foldchangedn), "Down", ifelse((padj <= adjp &  FoldChange >= foldchangeup), "Up",  "NS")))
 
-dplyr::count(result_table_filtered, category)
+counts_table <- dplyr::count(result_table_filtered, category)
+counts_table
