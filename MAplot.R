@@ -1,6 +1,6 @@
 library(ggplot2)
 
-result_filtered <- read.csv("result_table_filtered.csv", sep = " ")
+result_table_filtered_copy <- filtered_result
 
 theme_monica <- function(){
   theme_classic() %+replace%    #replace elements we want to change
@@ -41,7 +41,7 @@ theme_monica <- function(){
       
     )}
 
-MAplotoutput <- ggplot(result_table_filtered, aes(y = log2FoldChange, x = baseMean, color = category)) +
+MAplotoutput <- ggplot(result_table_filtered_copy, aes(y = log2FoldChange, x = baseMean, color = category)) +
   geom_point( size = 0.35) + theme_monica() + 
   theme(panel.border = element_rect(fill=NA, colour = "black", size=1)) +
   scale_color_manual(breaks = c("Up", "NS", "Down"), values=c('#ca0020','#bababa','#0571b0')) +
