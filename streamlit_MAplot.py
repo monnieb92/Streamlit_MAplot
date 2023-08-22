@@ -52,17 +52,14 @@ result_table_filtered <- result_table %>%
 count_result <- dplyr::count(result_table_filtered, category)
 '''
 st.code(code1, language='R')
-process1 = subprocess.Popen(["Rscript", "DifferentialTable.R", str(adjp), str(foldchangeup), str(foldchangedn)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 # Convert the DataFrame to a CSV string and pass it to the subprocess
-csv_string = upload_file_df.to_csv(index=False, sep=" ", quoting=1)
+csv_string = result_table_filtered.to_csv(index=False, sep=" ", quoting=1)
+process1 = subprocess.Popen(["Rscript", "DifferentialTable.R", str(adjp), str(foldchangeup), str(foldchangedn)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 result1, error1 = process1.communicate(input=csv_string)
-
-# Check if the process completed successfully
-if process1.returncode == 0:
-    # Print the count_result DataFrame from code1
-    st.subheader('Count Results from code1:')
-    st.write(count_result)
-
+    
+# Display the count_result DataFrame
+st.write("Count Results:")
+st.write(count_result)
 
 st.subheader('2. Plotting differential analysis')
 with st.expander('See code'):
