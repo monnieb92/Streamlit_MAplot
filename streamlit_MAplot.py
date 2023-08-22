@@ -61,7 +61,7 @@ else:
     
 # Display the count_result DataFrame
 st.write("Count Results:")
-st.write(count_result)
+st.code(stdout, language= 'r')
 
 st.subheader('2. Plotting differential analysis')
 with st.expander('See code'):
