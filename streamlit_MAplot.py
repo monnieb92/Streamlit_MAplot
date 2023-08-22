@@ -60,9 +60,12 @@ else:
     st.write('R Script Error in Differential Analysis')
     
 # Display the count_result DataFrame
-st.write("Count Results:")
-st.write(stdout)
-
+if stdout:
+    st.write("Count Results Output:")
+    st.code(stdout, language = 'r')
+else:
+    st.write("No output from the R code"
+            )
 st.subheader('2. Plotting differential analysis')
 with st.expander('See code'):
     code2 = '''
