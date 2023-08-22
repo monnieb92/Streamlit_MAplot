@@ -122,7 +122,7 @@ ggsave("MAplot.png", plot = MAplotoutput ,width = 4.25, height = 3, dpi = 300)
 
  '''
 # Execute the R code for the second code section (plotting differential analysis)
-process2 = subprocess.Popen(["Rscript", "MAplot.R"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+process2 = subprocess.Popen(["Rscript", "MAplot.R", str(filtered_result)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 result2, error2 = process2.communicate()  # Wait for R script to complete
 
 # Display any error message from the R script
