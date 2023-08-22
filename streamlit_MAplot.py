@@ -26,6 +26,7 @@ st.write('This is the path to the csv file from DESEQ2', uploaded_file)
 
 if uploaded_file is not None:
     upload_file_df = pd.read_csv(uploaded_file, sep=" ")
+st.write("Uploaded file df",upload_file_df)
 
 adjp = st.number_input('adjusted p-value')
 st.write('The current adjusted p-value is ', adjp)
