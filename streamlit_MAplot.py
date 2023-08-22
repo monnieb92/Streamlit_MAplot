@@ -43,7 +43,13 @@ with st.expander('See code'):
 library(dplyr)
 library(tidyverse)
 
-result_table <- upload_file_df
+args <- commandArgs(trailingOnly = TRUE)
+adjp <- as.numeric(args[1])
+foldchangeup <- as.numeric(args[2])
+foldchangedn <- as.numeric(args[3])
+df <- args[4] 
+
+result_table <- df
 result_table[is.na(result_table)] <- 1
 
 result_table_filtered <- result_table %>% 
@@ -51,10 +57,13 @@ result_table_filtered <- result_table %>%
   transform( category = ifelse((padj <= adjp &  FoldChange <= -foldchangedn), "Down", ifelse((padj <= adjp &  FoldChange >= foldchangeup), "Up",  "NS")))
 
 dplyr::count(result_table_filtered, category)
+
 '''
+    
 st.code(code1, language='R')
+csv_string = df.to_csv(index=False)
 process1 = subprocess.Popen(["Rscript", "DifferentialTable.R", str(adjp), str(foldchangeup), str(foldchangedn),
-    uploaded_file], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    csv_string], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 result1, error1 = process1.communicate()
 if process1.returncode == 0: 
     filtered_result = result_table_filtered.copy()
