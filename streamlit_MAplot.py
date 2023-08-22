@@ -60,6 +60,7 @@ if process1.returncode == 0:
     st.code(result1, language='r')
 else: 
     st.write('R Script Error in Differential Analysis')
+    st.write("Error:", error1)
     
 st.subheader('2. Plotting differential analysis')
 with st.expander('See code'):
