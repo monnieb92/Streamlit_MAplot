@@ -55,7 +55,7 @@ st.code(code1, language='R')
 process1 = subprocess.Popen(["Rscript", "DifferentialTable.R", str(adjp), str(foldchangeup), str(foldchangedn)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 result1, error1 = process1.communicate()
 if process1.returncode == 0: 
-    filtered_result=result_table_filtered.copy()
+    filtered_result = result_table_filtered.copy()
     st.write("Count Results Output:")
     st.code(result1, language='r')
 else: 
@@ -122,7 +122,7 @@ ggsave("MAplot.png", plot = MAplotoutput ,width = 4.25, height = 3, dpi = 300)
 
  '''
 # Execute the R code for the second code section (plotting differential analysis)
-process2 = subprocess.Popen(["Rscript", "MAplot.R", str(filtered_result)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+process2 = subprocess.Popen(["Rscript", "MAplot.R"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 result2, error2 = process2.communicate()  # Wait for R script to complete
 
 # Display any error message from the R script
