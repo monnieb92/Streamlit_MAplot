@@ -1,6 +1,0 @@
-r-base
-r-base-dev
-r-cran-ggplot2
-r-cran-tidyverse
-r-cran-dplyr
-r-cran-readr
