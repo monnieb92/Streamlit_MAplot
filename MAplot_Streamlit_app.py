@@ -39,7 +39,7 @@ if st.button('Determine Differential analysis'):
     result_table = upload_file_df.fillna(1)
 
     # Calculate FoldChange column and create the 'category' column
-    result_table_filtered = (
+    result_table = (
     result_table.assign(
         FoldChange=lambda df: ((2 ** (np.abs(np.log2(df['log2FoldChange']))) * np.sign(df['log2FoldChange']))),
         category=np.where(
