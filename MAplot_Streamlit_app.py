@@ -44,17 +44,14 @@ if st.button('Determine Differential analysis'):
         category=np.where((result_table['padj'] <= adjp) & (result_table['FoldChange'] <= -foldchangedn), "Down", 
                           np.where((result_table['padj'] <= adjp) & (result_table['FoldChange'] >= foldchangeup), "Up", "NS"))
     ))
-    # Save differential analysis 
-    result_table.to_csv['differential_analysis_results.csv']
-    category_counts = result_table['category'].value_counts()
     st.write('Category Counts:')
     st.write(category_counts)
 
 # Button click to create MA plot
-if st.button('Create MA plot'):
-    if 'result_table' not in locals():
-        st.write("Please perform the differential analysis first.")
-    else:
+#if st.button('Create MA plot'):
+ #   if 'result_table' not in locals():
+#        st.write("Please perform the differential analysis first.")
+ #   else:
         # Create the MA plot using Plotly
         fig = px.scatter(
             result_table_filtered,
