@@ -44,6 +44,8 @@ if st.button('Determine Differential analysis'):
         category=np.where((result_table['padj'] <= adjp) & (result_table['FoldChange'] <= -foldchangedn), "Down", 
                           np.where((result_table['padj'] <= adjp) & (result_table['FoldChange'] >= foldchangeup), "Up", "NS"))
     ))
+    # Save differential analysis 
+    result_table.to_csv['differential_analysis_results.csv']
     category_counts = result_table['category'].value_counts()
     st.write('Category Counts:')
     st.write(category_counts)
