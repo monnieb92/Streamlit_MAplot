@@ -45,10 +45,11 @@ if st.button('Determine Differential analysis'):
             (result_table['padj'] <= adjp) & (result_table['FoldChange'] <= -foldchangedn), "Down",
             np.where((result_table['padj'] <= adjp) & (result_table['FoldChange'] >= foldchangeup), "Up", "NS")
         )
+    ))
 
 # Button click to create MA plot
 if st.button('Create MA plot'):
-    if 'result_table' not in locals():
+    if 'result_table_filtered' not in locals():
         st.write("Please perform the differential analysis first.")
     else:
         # Create the MA plot using Plotly
