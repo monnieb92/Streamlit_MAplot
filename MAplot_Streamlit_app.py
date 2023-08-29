@@ -25,8 +25,8 @@ padj_column=st.text_area('The name of the column containing the adjusted p-value
 
 l2FChg_column=st.text_area('The name of the column containing the log2fold Change values',value='log2FoldChange')
 
-# GitHub file URL (replace with your actual GitHub URL)
-github_file_url = 'https://github.com/monnieb92/Streamlit_MAplot/blob/main/GSE160468_resultCTCFq0.01BLfiltered_SMARCA5dTAG47_24hrvs0hr.normTC_Kasumi1.txt'
+# Correct GitHub raw CSV file URL
+github_file_url = 'https://raw.githubusercontent.com/monnieb92/Streamlit_MAplot/main/GSE160468_resultCTCFq0.01BLfiltered_SMARCA5dTAG47_24hrvs0hr.normTC_Kasumi1.txt'
 
 # Button click to determine differential analysis
 if st.button('Determine Differential analysis'):
