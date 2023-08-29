@@ -43,8 +43,8 @@ if st.button('Determine Differential analysis'):
     result_table.assign(
         FoldChange=lambda df: ((2 ** (np.abs(np.log2(df['log2FoldChange']))) * np.sign(df['log2FoldChange']))),
         category=np.where(
-            (result_table_filtered['padj'] <= adjp) & (result_table_filtered['FoldChange'] <= -foldchangedn), "Down",
-            np.where((result_table_filtered['padj'] <= adjp) & (result_table_filtered['FoldChange'] >= foldchangeup), "Up", "NS")
+            (result_table['padj'] <= adjp) & (result_table['FoldChange'] <= -foldchangedn), "Down",
+            np.where((result_table['padj'] <= adjp) & (result_table['FoldChange'] >= foldchangeup), "Up", "NS")
         )
     )
 )
