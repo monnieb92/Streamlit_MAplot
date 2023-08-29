@@ -53,7 +53,7 @@ if st.button('Determine Differential analysis'):
 #        st.write("Please perform the differential analysis first.")
  #   else:
         # Create the MA plot using Plotly
-        fig = px.scatter(
+    fig = px.scatter(
             result_table_filtered,
             x='baseMean',
             y='log2FoldChange',
@@ -64,7 +64,7 @@ if st.button('Determine Differential analysis'):
         )
 
         # Add horizontal line at y = 0
-        fig.add_shape(
+    fig.add_shape(
             go.layout.Shape(
                 type="line",
                 x0=min(result_table_filtered['baseMean']),
@@ -76,16 +76,16 @@ if st.button('Determine Differential analysis'):
         )
 
         # Set log scale for x-axis
-        fig.update_xaxes(type="log")
+    fig.update_xaxes(type="log")
 
         # Set y-axis limits and ticks
         fig.update_yaxes(ticks="outside", tickvals=list(range(-4, 5)), range=[-4, 4])
 
         # Set x-axis ticks for log scale
-        fig.update_xaxes(ticks="outside", tickvals=[10, 100, 1000, 10000])
+    fig.update_xaxes(ticks="outside", tickvals=[10, 100, 1000, 10000])
 
         # Update layout settings
-        fig.update_layout(
+    fig.update_layout(
             showlegend=True,
             xaxis_title="Base Mean",
             yaxis_title="log2 Fold Change",
@@ -96,10 +96,10 @@ if st.button('Determine Differential analysis'):
         )
 
         # Show the plot
-        st.plotly_chart(fig)
+    st.plotly_chart(fig)
 
         # If you want to save the plot as an image
     
-        plt.savefig('MAplot.png')
-        st.pyplot(fig)
-        save=st.download_button('PNG file name to save', data=open('MAplot.png','rb').read(), file_name='MAplot.png',width=800, height=600, scale=2)
+    plt.savefig('MAplot.png')
+    st.pyplot(fig)
+    save=st.download_button('PNG file name to save', data=open('MAplot.png','rb').read(), file_name='MAplot.png',width=800, height=600, scale=2)
