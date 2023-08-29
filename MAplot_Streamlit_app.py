@@ -39,7 +39,7 @@ if st.button('Determine Differential analysis'):
     result_table = upload_file_df.fillna(1)
 
     # Calculate FoldChange column
-    result_table['FoldChange'] = (2 ** (np.abs(np.log2(result_table['log2FoldChange']))) * np.sign(result_table['log2FoldChange']))
+    result_table['FoldChange'] = (2 ** (np.abs(result_table['log2FoldChange'])) * np.sign(result_table['log2FoldChange']))
     result_table = (result_table.assign(
         category=np.where(
             (result_table['padj'] <= adjp) & (result_table['FoldChange'] <= -foldchangedn), "Down",
