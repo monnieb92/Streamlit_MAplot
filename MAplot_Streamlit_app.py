@@ -40,13 +40,13 @@ if st.button('Determine Differential analysis'):
 
     # Calculate FoldChange column and create the 'category' column
     result_table_filtered = (
-        result_table.assign(
-            FoldChange=lambda df: ((2 ** (np.abs(np.log2(df['log2FoldChange']))) * np.sign(df['log2FoldChange']))),
-            category=np.where(
-                (df['padj'] <= adjp) & (df['FoldChange'] <= -foldchangedn), "Down",
-                np.where((df['padj'] <= adjp) & (df['FoldChange'] >= foldchangeup), "Up", "NS")
-                )
+    result_table.assign(
+        FoldChange=lambda df: ((2 ** (np.abs(np.log2(df['log2FoldChange']))) * np.sign(df['log2FoldChange']))),
+        category=np.where(
+            (result_table_filtered['padj'] <= adjp) & (result_table_filtered['FoldChange'] <= -foldchangedn), "Down",
+            np.where((result_table_filtered['padj'] <= adjp) & (result_table_filtered['FoldChange'] >= foldchangeup), "Up", "NS")
         )
+    )
 )
 
 # Button click to create MA plot
