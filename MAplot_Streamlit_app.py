@@ -31,10 +31,10 @@ github_file_url = 'https://raw.githubusercontent.com/monnieb92/Streamlit_MAplot/
 # Button click to determine differential analysis
 if st.button('Determine Differential analysis'):
     if uploaded_file is not None:
-        upload_file_df = pd.read_csv(uploaded_file, sep="")
+        upload_file_df = pd.read_csv(uploaded_file, sep="\t")
     else:
         response = requests.get(github_file_url)
-        upload_file_df = pd.read_csv(StringIO(response.text), sep="")
+        upload_file_df = pd.read_csv(StringIO(response.text), sep="\t")
     # Replace NA values with 1
     result_table = upload_file_df.fillna(1)
 
