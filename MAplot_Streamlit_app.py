@@ -97,12 +97,12 @@ if st.button('Determine Differential analysis'):
             title_font=dict(family="Arial",color='black',size=12))
     
     fig.update_xaxes(showline=True, linewidth=2, linecolor='black',
-                 ticks="outside",tickson="boundaries",ticklen=5,
+                 ticks="outside",tickson="boundaries",ticklen=5,tickcolor="black",
                  tickfont=dict(family="Arial",color='black',size=xax_tick_font),
                  title_font=dict(family="Arial",color='black',size=xax_font))
 
     fig.update_yaxes(range = [yax_min,yax_max],showline=True, linewidth=2, linecolor='black',
-                 ticks="outside",tickson="boundaries",ticklen=5,
+                 ticks="outside",tickson="boundaries",ticklen=5,tickcolor="black",
                  tickfont=dict(family="Arial",color='black',size=xax_tick_font),
                  title_font=dict(family="Arial",color='black',size=yax_font))
 
