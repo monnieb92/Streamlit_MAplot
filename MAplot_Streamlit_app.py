@@ -90,6 +90,5 @@ if st.button('Determine Differential analysis'):
 
     # If you want to save the plot as an image
     
-    plt.savefig('MAplot.png')
     st.pyplot(fig)
     save=st.download_button('PNG file name to save', data=open('MAplot.png','rb').read(), file_name='MAplot.png',width=800, height=600, scale=2)
