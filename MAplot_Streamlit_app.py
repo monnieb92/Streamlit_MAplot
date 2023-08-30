@@ -91,4 +91,4 @@ if st.button('Determine Differential analysis'):
     fig.write_image('MAplot.png')
     st.plotly_chart(fig)
     
-    save=st.download_button('PNG file name to save', data=open('MAplot.png','rb').read(), file_name='MAplot.png', scale=2)
+    save=st.download_button('PNG file name to save', data=open('MAplot.png','rb').read(), file_name='MAplot.png')
