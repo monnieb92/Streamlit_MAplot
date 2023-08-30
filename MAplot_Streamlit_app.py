@@ -72,7 +72,7 @@ if st.button('Determine Differential analysis'):
         title=maplot_title)
 
      # Add horizontal line at y = 0
-    fig.add_shape(  go.layout.Shape(type="line", x0=min(result_table_df['baseMean']),
+    fig.add_shape(  go.layout.Shape(type="line", x0=min(0),
          x1=max(result_table_df['baseMean']),
          y0=0,
          y1=0,
@@ -95,7 +95,7 @@ if st.button('Determine Differential analysis'):
             height=figure_height,
             plot_bgcolor='white',
             legend_title_text="Category",
-            title_x=0.5,
+            title_x=0.4,
             title_font=dict(family="Arial",color='black',size=titlesize_font))
     
     fig.update_xaxes(showline=True, linewidth=2, linecolor='black',
