@@ -53,7 +53,7 @@ if st.button('Determine Differential analysis'):
 
 # Button click to create MA plot
 if st.button('Create MA plot'):
-    if 'result_table_df' not in locals():
+    if result_table_df.empty():
         st.write("Please perform the differential analysis first.")
     else:
         # Create the MA plot using Plotly
