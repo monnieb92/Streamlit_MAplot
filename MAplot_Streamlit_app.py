@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 
 uploaded_file = st.sidebar.file_uploader("Upload your input txt file", type=["txt"])
 st.write('This is the path to the txt file for the differential analysis', uploaded_file)
-
+filename_prefix=st.text_area('The prefix for the filenames',value='Differential_Analysis')
 adjp = st.number_input('adjusted p-value', value=0.05)
 st.write('The current adjusted p-value is ', adjp)
 
@@ -61,7 +61,7 @@ if st.button('Determine Differential analysis'):
     result_table_df = result_table
     # Save result_table as a CSV file
     result_table_csv = result_table.to_csv(index=False)
-    st.download_button('Download Result Table CSV',data=result_table_csv, file_name='result_table.csv')
+    st.download_button('Download Result Table CSV',data=result_table_csv, file_name='filename_prefix.csv')
    
     fig = px.scatter(result_table_df,
         x='baseMean',
@@ -115,4 +115,4 @@ if st.button('Determine Differential analysis'):
     fig.write_image('MAplot.png',scale=2)
     st.plotly_chart(fig)
     
-    save=st.download_button('PNG file name to save', data=open('MAplot.png','rb').read(), file_name='MAplot.png')
+    save=st.download_button('PNG file name to save', data=open('MAplot.png','rb').read(), file_name='filename_prefix.png')
