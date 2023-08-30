@@ -46,7 +46,7 @@ if st.button('Determine Differential analysis'):
     category_counts = result_table['category'].value_counts()
     st.write('Category Counts:')
     st.write(category_counts)
-    result_table_df = st.dataframe(result_table)
+    result_table_df = result_table
     # Save result_table as a CSV file
     result_table_csv = result_table.to_csv(index=False)
     st.download_button('Download Result Table CSV',data=result_table_csv, file_name='result_table.csv')
