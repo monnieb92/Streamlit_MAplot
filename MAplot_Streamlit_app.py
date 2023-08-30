@@ -12,9 +12,10 @@ import matplotlib.pyplot as plt
 
 uploaded_file = st.sidebar.file_uploader("Upload your input txt file", type=["txt"])
 st.write('This is the path to the txt file for the differential analysis', uploaded_file)
-filename_prefix=st.text_area('The prefix for the filenames',value='Differential_Analysis')
+filename_csv=st.text_area('The filename for the csv file, must end in .csv',value='Differential_Analysis.csv')
 adjp = st.number_input('adjusted p-value', value=0.05)
 st.write('The current adjusted p-value is ', adjp)
+filename_png=st.text_area('The filename for the MA plot, must end in .png',value='MAplot.png')
 
 foldchangeup = st.number_input('Fold Change Up', value=1.5)
 st.write('The current Fold Change for up regulated is ', foldchangeup)
@@ -61,7 +62,7 @@ if st.button('Determine Differential analysis'):
     result_table_df = result_table
     # Save result_table as a CSV file
     result_table_csv = result_table.to_csv(index=False)
-    st.download_button('Download Result Table CSV',data=result_table_csv, file_name=f'{filename_prefix}.csv')
+    st.download_button('Download Result Table CSV',data=result_table_csv, file_name=filename_png)
    
     fig = px.scatter(result_table_df,
         x='baseMean',
@@ -115,4 +116,4 @@ if st.button('Determine Differential analysis'):
     fig.write_image('MAplot.png',scale=2)
     st.plotly_chart(fig)
     
-    save=st.download_button('PNG file name to save', data=open('MAplot.png','rb').read(), file_name=f'{filename_prefix}.png')
+    save=st.download_button('PNG file name to save', data=open('MAplot.png','rb').read(), file_name=filename_png)
