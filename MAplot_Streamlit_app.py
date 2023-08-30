@@ -62,7 +62,7 @@ if st.button('Determine Differential analysis'):
     result_table_df = result_table
     # Save result_table as a CSV file
     result_table_csv = result_table.to_csv(index=False)
-    st.download_button('Download Result Table CSV',data=result_table_csv, file_name=filename_png)
+    st.download_button('Download Result Table CSV',data=result_table_csv, file_name=filename_csv)
    
     fig = px.scatter(result_table_df,
         x='baseMean',
