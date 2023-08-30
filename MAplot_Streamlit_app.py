@@ -25,7 +25,8 @@ st.write('The current Fold Change for down regulated is ', foldchangedn)
 padj_column=st.text_area('The name of the column containing the adjusted p-values',value='padj')
 
 l2FChg_column=st.text_area('The name of the column containing the log2fold Change values',value='log2FoldChange')
-
+maplot_title=st.text_area('The title of the MA plot',value='Differential Analysis')
+titlesize_font.number_input('The font size of the Title',value=15)
 yax_min=st.number_input('The minimun value of yaxis',value=-8)
 yax_max=st.number_input('The maximum value of yaxis',value=8)
 yax_font=st.number_input('The y-axis title font size',value=12)
@@ -68,7 +69,7 @@ if st.button('Determine Differential analysis'):
         color='category',
         color_discrete_map={'Up': '#ca0020', 'NS': '#bababa', 'Down': '#0571b0'},
         opacity=0.6,
-        title="MA Plot")
+        title=maplot_title)
 
      # Add horizontal line at y = 0
     fig.add_shape(  go.layout.Shape(type="line", x0=min(result_table_df['baseMean']),
@@ -94,7 +95,7 @@ if st.button('Determine Differential analysis'):
             height=figure_height,
             plot_bgcolor='white',
             legend_title_text="Category",
-            title_font=dict(family="Arial",color='black',size=12))
+            title_font=dict(family="Arial",color='black',size=titlesize_font))
     
     fig.update_xaxes(showline=True, linewidth=2, linecolor='black',
                  ticks="outside",tickson="boundaries",ticklen=5,tickcolor="black",
