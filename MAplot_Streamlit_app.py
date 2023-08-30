@@ -26,7 +26,7 @@ padj_column=st.text_area('The name of the column containing the adjusted p-value
 
 l2FChg_column=st.text_area('The name of the column containing the log2fold Change values',value='log2FoldChange')
 
-yax_range=st.text_area('The range of yaxis',value='-8,8')
+yax_range=st.number_input('The range of yaxis',value=-8,8)
 
 # Correct GitHub raw CSV file URL
 github_file_url = 'https://raw.githubusercontent.com/monnieb92/Streamlit_MAplot/main/GSE160468_resultCTCFq0.01BLfiltered_SMARCA5dTAG47_24hrvs0hr.normTC_Kasumi1.txt'
