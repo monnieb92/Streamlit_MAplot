@@ -61,7 +61,7 @@ if st.button('Determine Differential analysis'):
     result_table_df = result_table
     # Save result_table as a CSV file
     result_table_csv = result_table.to_csv(index=False)
-    st.download_button('Download Result Table CSV',data=result_table_csv, file_name='filename_prefix.csv')
+    st.download_button('Download Result Table CSV',data=result_table_csv, file_name=f'{filename_prefix}.csv')
    
     fig = px.scatter(result_table_df,
         x='baseMean',
@@ -115,4 +115,4 @@ if st.button('Determine Differential analysis'):
     fig.write_image('MAplot.png',scale=2)
     st.plotly_chart(fig)
     
-    save=st.download_button('PNG file name to save', data=open('MAplot.png','rb').read(), file_name='filename_prefix.png')
+    save=st.download_button('PNG file name to save', data=open('MAplot.png','rb').read(), file_name=f'{filename_prefix}.png')
