@@ -72,8 +72,10 @@ if st.button('Determine Differential analysis'):
         title=maplot_title)
 
      # Add horizontal line at y = 0
-    fig.add_shape(  go.layout.Shape(type="line", x0=0.01,
-         x1=max(result_table_df['baseMean']),
+    fig.add_shape(  go.layout.Shape(type="line",
+         xref="paper"
+         x0=0.01,
+         x1=1,
          y0=0,
          y1=0,
          line=dict(color="black", width=1),
