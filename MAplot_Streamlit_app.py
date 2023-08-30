@@ -26,6 +26,8 @@ padj_column=st.text_area('The name of the column containing the adjusted p-value
 
 l2FChg_column=st.text_area('The name of the column containing the log2fold Change values',value='log2FoldChange')
 
+yax_range=st.text_area('The range of yaxis',value='-8,8')
+
 # Correct GitHub raw CSV file URL
 github_file_url = 'https://raw.githubusercontent.com/monnieb92/Streamlit_MAplot/main/GSE160468_resultCTCFq0.01BLfiltered_SMARCA5dTAG47_24hrvs0hr.normTC_Kasumi1.txt'
 
@@ -84,8 +86,19 @@ if st.button('Determine Differential analysis'):
             width=800,
             height=600,
             plot_bgcolor='white',
-            legend_title_text="Category"
-        )
+            legend_title_text="Category",
+            title_font=dict(family="Arial",color='black',size=12))
+    
+    fig.update_xaxes(showline=True, linewidth=1, linecolor='black',
+                 ticks="outside",tickson="boundaries",ticklen=5,
+                 tickfont=dict(family="Arial",color='black',size=8),
+                 title_font=dict(family="Arial",color='black',size=10))
+
+    fig.update_yaxes(range = [yax_range],showline=True, linewidth=1, linecolor='black',
+                 ticks="outside",tickson="boundaries",ticklen=5,
+                 tickfont=dict(family="Arial",color='black',size=8),
+                 title_font=dict(family="Arial",color='black',size=10))
+
 
         # Show the plot
     fig.write_image('MAplot.png')
