@@ -47,8 +47,10 @@ if st.button('Determine Differential analysis'):
     else:
         response = requests.get(github_file_url)
         upload_file_df = pd.read_csv(StringIO(response.text), sep="\t")
+    #First drop any NAs that are within the baseMean
+    result_table = upload_file_df.dropna(subset=['baseMean'])
     # Replace NA values with 1
-    result_table = upload_file_df.fillna(1)
+    result_table = result_table.fillna(1)
 
     # Calculate FoldChange column
     result_table['FoldChange'] = (2 ** (np.abs((result_table['log2FoldChange']))) * np.sign(result_table['log2FoldChange']))
