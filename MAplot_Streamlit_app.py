@@ -46,15 +46,18 @@ if st.button('Determine Differential analysis'):
     ))
     st.write('Category Counts:')
     st.write(category_counts)
+    result_table = st.dataframe(result_table)
+    st.download_button('Download file', result_table)
+
 
 # Button click to create MA plot
-#if st.button('Create MA plot'):
- #   if 'result_table' not in locals():
-#        st.write("Please perform the differential analysis first.")
- #   else:
+if st.button('Create MA plot'):
+    if 'result_table' not in locals():
+        st.write("Please perform the differential analysis first.")
+    else:
         # Create the MA plot using Plotly
     fig = px.scatter(
-            result_table_filtered,
+            result_table,
             x='baseMean',
             y='log2FoldChange',
             color='category',
