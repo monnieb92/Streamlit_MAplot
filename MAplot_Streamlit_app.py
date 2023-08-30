@@ -48,7 +48,9 @@ if st.button('Determine Differential analysis'):
     st.write('Category Counts:')
     st.write(category_counts)
     result_table = st.dataframe(result_table)
-    st.download_button('Download file', result_table)
+     # Save result_table as a CSV file
+    result_csv = result_table.to_csv(index=False)
+    st.download_button('Download Result Table CSV', data=result_csv, file_name='result_table.csv')
 
 
 # Button click to create MA plot
