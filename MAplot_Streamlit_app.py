@@ -50,28 +50,22 @@ if st.button('Determine Differential analysis'):
     # Save result_table as a CSV file
     result_table_csv = result_table.to_csv(index=False)
     st.download_button('Download Result Table CSV',data=result_table_csv, file_name='result_table.csv')
-
+   
     fig = px.scatter(result_table_df,
-            x='baseMean',
-            y='log2FoldChange',
-            color='category',
-            color_discrete_map={'Up': '#ca0020', 'NS': '#bababa', 'Down': '#0571b0'},
-            opacity=0.6,
-            title="MA Plot"
-        )
+        x='baseMean',
+        y='log2FoldChange',
+        color='category',
+        color_discrete_map={'Up': '#ca0020', 'NS': '#bababa', 'Down': '#0571b0'},
+        opacity=0.6,
+        title="MA Plot")
 
      # Add horizontal line at y = 0
-     fig.add_shape(
-            go.layout.Shape(
-                type="line",
-                x0=min(result_table_filtered['baseMean']),
-                x1=max(result_table_filtered['baseMean']),
-                y0=0,
-                y1=0,
-                line=dict(color="black", width=1),
-            )
-        )
-
+    fig.add_shape(  go.layout.Shape(type="line", x0=min(result_table_filtered['baseMean']),
+         x1=max(result_table_filtered['baseMean']),
+         y0=0,
+         y1=0,
+         line=dict(color="black", width=1),
+         ))
         # Set log scale for x-axis
     fig.update_xaxes(type="log")
 
@@ -82,8 +76,7 @@ if st.button('Determine Differential analysis'):
     fig.update_xaxes(ticks="outside", tickvals=[10, 100, 1000, 10000])
 
         # Update layout settings
-    fig.update_layout(
-            showlegend=True,
+    fig.update_layout(showlegend=True,
             xaxis_title="Base Mean",
             yaxis_title="log2 Fold Change",
             width=800,
