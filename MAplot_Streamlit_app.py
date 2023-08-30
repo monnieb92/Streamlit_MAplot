@@ -60,8 +60,8 @@ if st.button('Determine Differential analysis'):
         title="MA Plot")
 
      # Add horizontal line at y = 0
-    fig.add_shape(  go.layout.Shape(type="line", x0=min(result_table_filtered['baseMean']),
-         x1=max(result_table_filtered['baseMean']),
+    fig.add_shape(  go.layout.Shape(type="line", x0=min(result_table_df['baseMean']),
+         x1=max(result_table_df['baseMean']),
          y0=0,
          y1=0,
          line=dict(color="black", width=1),
