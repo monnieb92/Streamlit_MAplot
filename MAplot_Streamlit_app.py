@@ -110,7 +110,7 @@ if st.button('Determine Differential analysis'):
 
 
         # Show the plot
-    fig.write_image('MAplot.png')
+    fig.write_image('MAplot.png',scale=2)
     st.plotly_chart(fig)
     
     save=st.download_button('PNG file name to save', data=open('MAplot.png','rb').read(), file_name='MAplot.png')
