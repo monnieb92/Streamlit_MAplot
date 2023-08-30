@@ -28,6 +28,13 @@ l2FChg_column=st.text_area('The name of the column containing the log2fold Chang
 
 yax_min=st.number_input('The minimun value of yaxis',value=-8)
 yax_max=st.number_input('The maximum value of yaxis',value=8)
+yax_font=st.number_input('The y-axis title font size',value=12)
+yax_tick_font=st.number_input('The y-axis tick font size',value=10)
+xax_font=st.number_input('The x-axis title font size',value=12)
+xax_tick_font=st.number_input('The x-axis tick font size',value=10)
+figure_width=st.number_input('The width of the figure',value=300)
+figure_height=st.number_input('The height of the figure',value=500)
+
 # Correct GitHub raw CSV file URL
 github_file_url = 'https://raw.githubusercontent.com/monnieb92/Streamlit_MAplot/main/GSE160468_resultCTCFq0.01BLfiltered_SMARCA5dTAG47_24hrvs0hr.normTC_Kasumi1.txt'
 
@@ -74,30 +81,30 @@ if st.button('Determine Differential analysis'):
     fig.update_xaxes(type="log")
 
         # Set y-axis limits and ticks
-    fig.update_yaxes(ticks="outside", tickvals=list(range(yax_min, yax_max)), range=[yax_min, yax_max])
+    fig.update_yaxes(ticks="outside", tickvals=list(range(yax_min, (yax_max+1))), range=[yax_min, yax_max],showgrid=False)
 
         # Set x-axis ticks for log scale
-    fig.update_xaxes(ticks="outside", tickvals=[10, 100, 1000, 10000])
+    fig.update_xaxes(ticks="outside", tickvals=[10, 100, 1000, 10000],showgrid=False)
 
         # Update layout settings
     fig.update_layout(showlegend=True,
             xaxis_title="Base Mean",
             yaxis_title="log2 Fold Change",
-            width=800,
-            height=600,
+            width=figure_width,
+            height=figure_height,
             plot_bgcolor='white',
             legend_title_text="Category",
             title_font=dict(family="Arial",color='black',size=12))
     
-    fig.update_xaxes(showline=True, linewidth=1, linecolor='black',
+    fig.update_xaxes(showline=True, linewidth=2, linecolor='black',
                  ticks="outside",tickson="boundaries",ticklen=5,
-                 tickfont=dict(family="Arial",color='black',size=8),
-                 title_font=dict(family="Arial",color='black',size=10))
+                 tickfont=dict(family="Arial",color='black',size=xax_tick_font),
+                 title_font=dict(family="Arial",color='black',size=xax_font))
 
-    fig.update_yaxes(range = [yax_min,yax_max],showline=True, linewidth=1, linecolor='black',
+    fig.update_yaxes(range = [yax_min,yax_max],showline=True, linewidth=2, linecolor='black',
                  ticks="outside",tickson="boundaries",ticklen=5,
-                 tickfont=dict(family="Arial",color='black',size=8),
-                 title_font=dict(family="Arial",color='black',size=10))
+                 tickfont=dict(family="Arial",color='black',size=xax_tick_font),
+                 title_font=dict(family="Arial",color='black',size=yax_font))
 
 
         # Show the plot
