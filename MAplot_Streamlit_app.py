@@ -1,12 +1,14 @@
 #!/bin/python 
 
 import pandas as pd
+from PIL import Image
 import numpy as np
 import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 import requests
 from io import StringIO
+import matplotlib.pyplot as plt
 
 uploaded_file = st.sidebar.file_uploader("Upload your input txt file", type=["txt"])
 st.write('This is the path to the txt file for the differential analysis', uploaded_file)
@@ -86,7 +88,7 @@ if st.button('Determine Differential analysis'):
         )
 
         # Show the plot
-    fig.write_image('MAplot.png')
+    plt.savefig('MAplot.png')
     st.plotly_chart(fig)
 
     # If you want to save the plot as an image
