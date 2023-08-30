@@ -74,7 +74,7 @@ if st.button('Determine Differential analysis'):
     fig.update_xaxes(type="log")
 
         # Set y-axis limits and ticks
-    fig.update_yaxes(ticks="outside", tickvals=list(range(yax_min, yax_max)), range=[-yax_min, yax_max])
+    fig.update_yaxes(ticks="outside", tickvals=list(range(yax_min, yax_max)), range=[yax_min, yax_max])
 
         # Set x-axis ticks for log scale
     fig.update_xaxes(ticks="outside", tickvals=[10, 100, 1000, 10000])
