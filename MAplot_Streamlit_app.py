@@ -89,9 +89,6 @@ if st.button('Determine Differential analysis'):
 
         # Show the plot
     plt.savefig('MAplot.png')
-    st.plotly_chart(fig)
-
-    # If you want to save the plot as an image
-    
     st.pyplot(fig)
-    st.download_button('PNG file name to save', data=open('MAplot.png','rb').read(), file_name='MAplot.png',width=800, height=600, scale=2)
+    
+    save=st.download_button('PNG file name to save', data=open('MAplot.png','rb').read(), file_name='MAplot.png',width=800, height=600, scale=2)
