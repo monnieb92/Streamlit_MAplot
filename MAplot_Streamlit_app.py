@@ -95,6 +95,7 @@ if st.button('Determine Differential analysis'):
             height=figure_height,
             plot_bgcolor='white',
             legend_title_text="Category",
+            title_x=0.5,
             title_font=dict(family="Arial",color='black',size=titlesize_font))
     
     fig.update_xaxes(showline=True, linewidth=2, linecolor='black',
