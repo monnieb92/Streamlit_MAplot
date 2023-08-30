@@ -73,7 +73,7 @@ if st.button('Determine Differential analysis'):
 
      # Add horizontal line at y = 0
     fig.add_shape(  go.layout.Shape(type="line",
-         xref="paper"
+         xref="paper",
          x0=0,
          x1=1,
          y0=0,
