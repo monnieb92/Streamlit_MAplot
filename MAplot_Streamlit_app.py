@@ -56,8 +56,7 @@ if st.button('Create MA plot'):
         st.write("Please perform the differential analysis first.")
     else:
         # Create the MA plot using Plotly
-    fig = px.scatter(
-            result_table,
+    fig = px.scatter(result_table,
             x='baseMean',
             y='log2FoldChange',
             color='category',
