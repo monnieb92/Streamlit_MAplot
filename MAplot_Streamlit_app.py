@@ -34,7 +34,7 @@ yax_font=st.number_input('The y-axis title font size',value=12)
 yax_tick_font=st.number_input('The y-axis tick font size',value=10)
 xax_font=st.number_input('The x-axis title font size',value=12)
 xax_tick_font=st.number_input('The x-axis tick font size',value=10)
-figure_width=st.number_input('The width of the figure',value=450)
+figure_width=st.number_input('The width of the figure',value=500)
 figure_height=st.number_input('The height of the figure',value=500)
 
 # Correct GitHub raw CSV file URL
