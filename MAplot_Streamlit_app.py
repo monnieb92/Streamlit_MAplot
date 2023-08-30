@@ -1,6 +1,5 @@
 #!/bin/python 
 
-
 import pandas as pd
 import numpy as np
 import streamlit as st
@@ -47,24 +46,18 @@ if st.button('Determine Differential analysis'):
     category_counts = result_table['category'].value_counts()
     st.write('Category Counts:')
     st.write(category_counts)
-    result_table = st.dataframe(result_table)
-     # Save result_table as a CSV file
-    def convert_df(df):
-       return df.to_csv(index=False).encode('utf-8')
+    result_table_df = st.dataframe(result_table)
 
-
-    csv = convert_df(result_table)
-
-    st.download_button("Press to Download",csv,"result_table.csv", "text/csv",key='download-csv')
+    st.download_button("Press to Download",result_table,"result_table.csv", "text/csv",key='download-csv')
 
 
 # Button click to create MA plot
 if st.button('Create MA plot'):
-    if 'result_table' not in locals():
+    if 'result_table_df' not in locals():
         st.write("Please perform the differential analysis first.")
     else:
         # Create the MA plot using Plotly
-        fig = px.scatter(result_table,
+        fig = px.scatter(result_table_df,
             x='baseMean',
             y='log2FoldChange',
             color='category',
