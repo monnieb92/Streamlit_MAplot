@@ -68,7 +68,7 @@ if st.button('Determine Differential analysis'):
         y='log2FoldChange',
         color='category',
         color_discrete_map={'Up': '#ca0020', 'NS': '#bababa', 'Down': '#0571b0'},
-        opacity=0.6,
+        opacity=0.0,
         title=maplot_title)
 
      # Add horizontal line at y = 0
