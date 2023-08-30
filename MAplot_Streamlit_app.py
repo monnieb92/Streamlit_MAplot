@@ -51,13 +51,7 @@ if st.button('Determine Differential analysis'):
     result_table_csv = result_table.to_csv(index=False)
     st.download_button('Download Result Table CSV',data=result_table_csv, file_name='result_table.csv')
 
-# Button click to create MA plot
-if st.button('Create MA plot'):
-    if result_table_df.empty():
-        st.write("Please perform the differential analysis first.")
-    else:
-        # Create the MA plot using Plotly
-        fig = px.scatter(result_table_df,
+    fig = px.scatter(result_table_df,
             x='baseMean',
             y='log2FoldChange',
             color='category',
@@ -66,8 +60,8 @@ if st.button('Create MA plot'):
             title="MA Plot"
         )
 
-        # Add horizontal line at y = 0
-        fig.add_shape(
+     # Add horizontal line at y = 0
+     fig.add_shape(
             go.layout.Shape(
                 type="line",
                 x0=min(result_table_filtered['baseMean']),
@@ -79,16 +73,16 @@ if st.button('Create MA plot'):
         )
 
         # Set log scale for x-axis
-        fig.update_xaxes(type="log")
+    fig.update_xaxes(type="log")
 
         # Set y-axis limits and ticks
-        fig.update_yaxes(ticks="outside", tickvals=list(range(-4, 5)), range=[-4, 4])
+    fig.update_yaxes(ticks="outside", tickvals=list(range(-4, 5)), range=[-4, 4])
 
         # Set x-axis ticks for log scale
-        fig.update_xaxes(ticks="outside", tickvals=[10, 100, 1000, 10000])
+    fig.update_xaxes(ticks="outside", tickvals=[10, 100, 1000, 10000])
 
         # Update layout settings
-        fig.update_layout(
+    fig.update_layout(
             showlegend=True,
             xaxis_title="Base Mean",
             yaxis_title="log2 Fold Change",
@@ -99,10 +93,10 @@ if st.button('Create MA plot'):
         )
 
         # Show the plot
-        st.plotly_chart(fig)
+    st.plotly_chart(fig)
 
-        # If you want to save the plot as an image
+    # If you want to save the plot as an image
     
-        plt.savefig('MAplot.png')
-        st.pyplot(fig)
-        save=st.download_button('PNG file name to save', data=open('MAplot.png','rb').read(), file_name='MAplot.png',width=800, height=600, scale=2)
+    plt.savefig('MAplot.png')
+    st.pyplot(fig)
+    save=st.download_button('PNG file name to save', data=open('MAplot.png','rb').read(), file_name='MAplot.png',width=800, height=600, scale=2)
