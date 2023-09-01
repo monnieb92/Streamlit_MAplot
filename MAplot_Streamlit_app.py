@@ -90,7 +90,7 @@ if st.button('Determine Differential analysis'):
     fig.update_yaxes(ticks="outside", tickvals=list(range(yax_min, (yax_max+1),2)), range=[yax_min, yax_max],dtick=2,showgrid=False)
 
         # Set x-axis ticks for log scale
-   # fig.update_xaxes(ticks="outside", tickvals=[10, 100, 1000, 10000])
+    fig.update_xaxes(ticks="outside", tickvals=[1, 10, 100, 1000, 10000])
 
         # Update layout settings
     fig.update_layout(showlegend=True,
