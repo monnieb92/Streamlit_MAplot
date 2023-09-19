@@ -71,7 +71,7 @@ if st.button('Determine Differential analysis'):
         x='baseMean',
         y='log2FoldChange',
         color='category',
-        text=dot_names,
+        hover_name=dot_names,
         color_discrete_map={'Up': '#ca0020', 'NS': '#bababa', 'Down': '#0571b0'},
         opacity=1,
         title=maplot_title)
@@ -123,5 +123,5 @@ if st.button('Determine Differential analysis'):
     save=st.download_button('PNG file name to save', data=open('MAplot.png','rb').read(), file_name=filename_png)
     
     fig.write_html("MAplothtml.html", scale=2)
-
+    st.plotly_chart(fig)
     save=st.download_button('html file name to save', data=open('MAplothtml.html','rb').read(), file_name=filename_html)
