@@ -36,7 +36,7 @@ xax_font=st.number_input('The x-axis title font size',value=12)
 xax_tick_font=st.number_input('The x-axis tick font size',value=10)
 figure_width=st.number_input('The width of the figure',value=500)
 figure_height=st.number_input('The height of the figure',value=500)
-
+xax_tick_range_max=st.number_input('The x-axis tick range max number',value=5)
 # Correct GitHub raw CSV file URL
 github_file_url = 'https://raw.githubusercontent.com/monnieb92/Streamlit_MAplot/main/GSE160468_resultCTCFq0.01BLfiltered_SMARCA5dTAG47_24hrvs0hr.normTC_Kasumi1.txt'
 
@@ -86,13 +86,11 @@ if st.button('Determine Differential analysis'):
         # Set log scale for x-axis
     fig.update_xaxes(type="log",showgrid=False,
                     ticks="outside", tickvals=[1,10, 100, 1000, 10000,100000],
-                    dtick=1,range=[0,5])
+                    dtick=1,range=[0,xax_tick_range_max])
 
         # Set y-axis limits and ticks
     fig.update_yaxes(ticks="outside", tickvals=list(range(yax_min, (yax_max+1),2)), range=[yax_min, yax_max],dtick=2,showgrid=False)
 
-        # Set x-axis ticks for log scale
-    #fig.update_xaxes(ticks="outside", tickvals=[10, 100, 1000, 10000,100000])
 
         # Update layout settings
     fig.update_layout(showlegend=True,
