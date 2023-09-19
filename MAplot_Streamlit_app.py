@@ -38,6 +38,7 @@ xax_tick_font=st.number_input('The x-axis tick font size',value=10)
 figure_width=st.number_input('The width of the figure',value=500)
 figure_height=st.number_input('The height of the figure',value=500)
 xax_tick_range_max=st.number_input('The x-axis tick range max number',value=5)
+fontweights=st.text_area('The weight of the font, normal or bold',value='bold')
 # Correct GitHub raw CSV file URL
 github_file_url = 'https://raw.githubusercontent.com/monnieb92/Streamlit_MAplot/main/GSE160468_resultCTCFq0.01BLfiltered_SMARCA5dTAG47_24hrvs0hr.normTC_Kasumi1.txt'
 
@@ -103,17 +104,17 @@ if st.button('Determine Differential analysis'):
             plot_bgcolor='white',
             legend_title_text="Category",
             title_x=0.4,
-            title_font=dict(family="Arial",color='black',size=titlesize_font))
+            title_font=dict(family="Arial",color='black',size=titlesize_font,weight=fontweights))
     
     fig.update_xaxes(showline=True, linewidth=2, linecolor='black',
                  ticks="outside",tickson="boundaries",ticklen=5,tickcolor="black",
-                 tickfont=dict(family="Arial",color='black',size=xax_tick_font),
-                 title_font=dict(family="Arial",color='black',size=xax_font))
+                 tickfont=dict(family="Arial",color='black',size=xax_tick_font,weight=fontweights),
+                 title_font=dict(family="Arial",color='black',size=xax_font,weight=fontweights))
 
     fig.update_yaxes(showline=True, linewidth=2, linecolor='black',
                  ticks="outside",tickson="boundaries",ticklen=5,tickcolor="black",
-                 tickfont=dict(family="Arial",color='black',size=xax_tick_font),
-                 title_font=dict(family="Arial",color='black',size=yax_font))
+                 tickfont=dict(family="Arial",color='black',size=xax_tick_font,weight=fontweights),
+                 title_font=dict(family="Arial",color='black',size=yax_font,weight=fontweights))
 
 
         # Show the plot
