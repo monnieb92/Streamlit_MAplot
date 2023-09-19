@@ -122,6 +122,5 @@ if st.button('Determine Differential analysis'):
     
     save=st.download_button('PNG file name to save', data=open('MAplot.png','rb').read(), file_name=filename_png)
     
-    fig.write_html("MAplothtml.html", scale=2)
-    st.plotly_chart(fig)
-    save=st.download_button('html file name to save', data=open('MAplothtml.html','rb').read(), file_name=filename_html)
+    plot_html = fig.to_html()
+    save=st.download_button('html file name to save', data=plot_html, file_name=filename_html,mime='text/html',)
