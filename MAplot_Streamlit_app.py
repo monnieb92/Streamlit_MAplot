@@ -16,7 +16,7 @@ filename_csv=st.text_area('The filename for the csv file, must end in .csv',valu
 adjp = st.number_input('adjusted p-value', value=0.05)
 st.write('The current adjusted p-value is ', adjp)
 filename_png=st.text_area('The filename for the MA plot, must end in .png',value='MAplot.png')
-
+filename_html=st.text_area('The html name for the MA plot, must end in .html',value='MAplothtml.html')
 foldchangeup = st.number_input('Fold Change Up', value=1.5)
 st.write('The current Fold Change for up regulated is ', foldchangeup)
 
@@ -121,3 +121,7 @@ if st.button('Determine Differential analysis'):
     st.plotly_chart(fig)
     
     save=st.download_button('PNG file name to save', data=open('MAplot.png','rb').read(), file_name=filename_png)
+    
+    fig.write_html("MAplothtml.html", scale=2)
+
+    save=st.download_button('html file name to save', data=open('MAplothtml.html','rb').read(), file_name=filename_html)
