@@ -105,17 +105,17 @@ if st.button('Determine Differential analysis'):
             plot_bgcolor='white',
             legend_title_text="Category",
             title_x=0.4,
-            title_font=dict(family="Arial",color='black',size=titlesize_font, weight=fontweights))
+            title_font=dict(family="Arial",color='black',size=titlesize_font, style=fontweights))
     
     fig.update_xaxes(showline=True, linewidth=2, linecolor='black',
                  ticks="outside",tickson="boundaries",ticklen=5,tickcolor="black",
-                 tickfont=dict(family="Arial",color='black',size=xax_tick_font, weight=fontweights),
-                 title_font=dict(family="Arial",color='black',size=xax_font, weight=fontweights))
+                 tickfont=dict(family="Arial",color='black',size=xax_tick_font, style=fontweights),
+                 title_font=dict(family="Arial",color='black',size=xax_font, style=fontweights))
 
     fig.update_yaxes(showline=True, linewidth=2, linecolor='black',
                  ticks="outside",tickson="boundaries",ticklen=5,tickcolor="black",
-                 tickfont=dict(family="Arial",color='black',size=xax_tick_font, weight=fontweights),
-                 title_font=dict(family="Arial",color='black',size=yax_font, weight=fontweights))
+                 tickfont=dict(family="Arial",color='black',size=xax_tick_font, style=fontweights),
+                 title_font=dict(family="Arial",color='black',size=yax_font, style=fontweights))
 
 
         # Show the plot
