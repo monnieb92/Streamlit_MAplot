@@ -27,6 +27,7 @@ padj_column=st.text_area('The name of the column containing the adjusted p-value
 
 l2FChg_column=st.text_area('The name of the column containing the log2fold Change values',value='log2FoldChange')
 maplot_title=st.text_area('The title of the MA plot',value='Differential Analysis')
+dot_names=st.text_area('The title of the MA plot',value='None')
 titlesize_font=st.number_input('The font size of the Title',value=15)
 yax_min=st.number_input('The minimun value of yaxis',value=-8)
 yax_max=st.number_input('The maximum value of yaxis',value=8)
@@ -70,6 +71,7 @@ if st.button('Determine Differential analysis'):
         x='baseMean',
         y='log2FoldChange',
         color='category',
+        text='dot_names',
         color_discrete_map={'Up': '#ca0020', 'NS': '#bababa', 'Down': '#0571b0'},
         opacity=1,
         title=maplot_title)
