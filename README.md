@@ -22,4 +22,4 @@
 https://differentialanalysismaplot.streamlit.app/
 
 ###Example of a MA plot:
-![Figure Formating](./Images_github_maplot/MAplot-9.png)
+<img src="./Images_github_maplot/MAplot-9.png" width="300" height="300">
