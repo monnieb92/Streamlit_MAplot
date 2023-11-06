@@ -18,8 +18,9 @@
    * 4 = 10<sup>4</sup>
    * 5 = 10<sup>5</sup>
    * 6 = 10<sup>6</sup>
-9. Run analysis and have fun!
+9. Run analysis and have fun! <br>
 https://differentialanalysismaplot.streamlit.app/
 
-###Example of a MA plot:
+###Example of a MA plot:<br>
+
 <img src="./Images_github_maplot/MAplot-9.png" width="300" height="300">
