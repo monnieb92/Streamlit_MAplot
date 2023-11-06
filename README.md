@@ -12,11 +12,11 @@
 7. Adjust any of the figure formating for your MA plot such as font size, number of ticks, image size, etc.
 ![Figure Formating](./Images_github_maplot/TickRange.png)
 8. For the number of ticks on the y-axis (baseMean) here is the typical outcome for each number:
-   *1 = 10^1^
-   *2 = 10^2^
-   *3 = 10^3^
-   *4 = 10^4^
-   *5 = 10^5^
-   *6 = 10^6^
+   * 1 = 10<sup>1</sup>
+   * 2 = 10<sup>2</sup>
+   * 3 = 10<sup>3</sup>
+   * 4 = 10<sup>4</sup>
+   * 5 = 10<sup>5</sup>
+   * 6 = 10<sup>6</sup>
 9. Run analysis and have fun!
 https://differentialanalysismaplot.streamlit.app/
