@@ -21,6 +21,5 @@
 9. Run analysis and have fun!
 https://differentialanalysismaplot.streamlit.app/
 
-###Example of a html MA plot:
-
-<iframe width="500" height="500" src="MAplothtml-2.html"></iframe>
+###Example of a MA plot:
+![Figure Formating](./Images_github_maplot/MAplot-9.png)
