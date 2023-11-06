@@ -20,3 +20,6 @@
    * 6 = 10<sup>6</sup>
 9. Run analysis and have fun!
 https://differentialanalysismaplot.streamlit.app/
+###Example of a html MA plot:
+
+<iframe width="800" height="700" src="./Images_github_maplot/MAplothtml-2.html"></iframe>
