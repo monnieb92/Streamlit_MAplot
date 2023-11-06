@@ -23,4 +23,4 @@ https://differentialanalysismaplot.streamlit.app/
 
 ###Example of a html MA plot:
 
-<iframe width="800" height="700" src="./Images_github_maplot/MAplothtml-2.html"></iframe>
+<iframe width="500" height="500" src="./Images_github_maplot/MAplothtml-2.html"></iframe>
