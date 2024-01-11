@@ -77,7 +77,7 @@ if st.button('Determine Differential analysis'):
         hover_name=dot_names,
         color_discrete_map={'Up': '#ca0020', 'NS': '#bababa', 'Down': '#0571b0'},
         opacity=1,
-        title=maplot_title, size=marker_size)
+        title=maplot_title, size=marker_size if marker_size else None)
 
      # Add horizontal line at y = 0
     fig.add_shape(  go.layout.Shape(type="line",
