@@ -99,8 +99,8 @@ if st.button('Determine Differential analysis'):
     
     fig.add_shape(  go.layout.Shape(type="line",
          xref="paper",
-         x0=0,
-         x1=minxaxis,
+         x0=minxaxis,
+         x1=1,
          y0=0,
          y1=0,
          line=dict(color="black", width=1),
