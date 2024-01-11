@@ -90,17 +90,11 @@ if st.button('Determine Differential analysis'):
     else:
         fig.update_xaxes(showgrid=False)
     # Add horizontal line at y = 0
-    if logchoice == 'log2':
-        minxaxis = np.log2(result_table_df['baseMean']).min()
-    elif logchoice == 'log10':
-        minxaxis = np.log10(result_table_df['baseMean']).min() 
-    else: 
-        minxaxis = result_table_df['baseMean'].min()
     fig.add_shape(  go.layout.Shape(type="line",
          xref="paper",
          x0=0,
          x1=1,
-         y0=3,
+         y0=0,
          y1=0,
          line=dict(color="black", width=1),
          ))
@@ -118,11 +112,24 @@ if st.button('Determine Differential analysis'):
             legend_title_text="Category",
             title_x=0.4,
             title_font=dict(family=fontnames,color='black',size=titlesize_font))
-    
+    # Adding ranges to my x and y axis 
+    if logchoice == 'log2':
+        minxaxis = np.log2(result_table_df['baseMean']).min()
+    elif logchoice == 'log10':
+        minxaxis = np.log10(result_table_df['baseMean']).min() 
+    else: 
+        minxaxis = result_table_df['baseMean'].min()
+    if logchoice == 'log2':
+        maxxaxis = np.log2(result_table_df['baseMean']).max()
+    elif logchoice == 'log10':
+        maxxaxis = np.log10(result_table_df['baseMean']).max() 
+    else: 
+        maxxaxis = result_table_df['baseMean'].max()    
     fig.update_xaxes(showline=True, linewidth=2, linecolor='black',showgrid=False,
                  ticks="outside",tickson="boundaries",ticklen=5,tickcolor="black",
                  tickfont=dict(family=fontnames,color='black',size=xax_tick_font),
-                 title_font=dict(family=fontnames,color='black',size=xax_font))
+                 title_font=dict(family=fontnames,color='black',size=xax_font),
+                 range=[minxaxis,maxxaxis])
 
     fig.update_yaxes(showline=True, linewidth=2, linecolor='black',showgrid=False,
                  ticks="outside",tickson="boundaries",ticklen=5,tickcolor="black",
