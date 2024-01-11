@@ -96,7 +96,7 @@ if st.button('Determine Differential analysis'):
         minxaxis = np.log10(result_table_df['baseMean']).min() 
     else: 
         minxaxis = result_table_df['baseMean'].min()
-    print(minxaxis)
+    st.write(minxaxis)
     fig.add_shape(  go.layout.Shape(type="line",
          xref="paper",
          x0=minxaxis,
