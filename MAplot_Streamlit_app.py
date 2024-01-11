@@ -70,7 +70,7 @@ if st.button('Determine Differential analysis'):
     st.download_button('Download Result Table CSV',data=result_table_csv, file_name=filename_csv)
    
     fig = px.scatter(result_table_df,
-        x=np.logchoice(result_table_df['baseMean']),
+        x=np.log2(result_table_df['baseMean']) if logchoice == 'log2' else np.log10(result_table_df['baseMean']),
         y='log2FoldChange',
         color='category',
         hover_name=dot_names,
