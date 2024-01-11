@@ -39,7 +39,7 @@ figure_width=st.number_input('The width of the figure',value=500)
 figure_height=st.number_input('The height of the figure',value=500)
 xax_tick_range_max=st.number_input('The x-axis tick range max number',value=6)
 fontnames=st.text_area('The name of the fonts, Arial or Arial Black',value='Arial Black')
-
+logchoice=st.selectbox("Pick one", ["log2", "log10"])
 # Correct GitHub raw CSV file URL
 github_file_url = 'https://raw.githubusercontent.com/monnieb92/Streamlit_MAplot/main/GSE160468_resultCTCFq0.01BLfiltered_SMARCA5dTAG47_24hrvs0hr.normTC_Kasumi1.txt'
 
@@ -70,7 +70,7 @@ if st.button('Determine Differential analysis'):
     st.download_button('Download Result Table CSV',data=result_table_csv, file_name=filename_csv)
    
     fig = px.scatter(result_table_df,
-        x='baseMean',
+        x=logchoice('baseMean',)
         y='log2FoldChange',
         color='category',
         hover_name=dot_names,
@@ -98,7 +98,7 @@ if st.button('Determine Differential analysis'):
 
         # Update layout settings
     fig.update_layout(showlegend=True,
-            xaxis_title="Base Mean",
+            xaxis_title="logchoice Base Mean",
             yaxis_title="log2 Fold Change",
             width=figure_width,
             height=figure_height,
