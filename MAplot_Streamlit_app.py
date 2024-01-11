@@ -35,7 +35,7 @@ yax_font=st.number_input('The y-axis title font size',value=12)
 yax_tick_font=st.number_input('The y-axis tick font size',value=10)
 xax_font=st.number_input('The x-axis title font size',value=12)
 xax_tick_font=st.number_input('The x-axis tick font size',value=10)
-marker_size=st.number_input('The dot size',value=2)
+sizeofmarker=st.number_input('The dot size',value=2)
 figure_width=st.number_input('The width of the figure',value=500)
 figure_height=st.number_input('The height of the figure',value=500)
 #xax_tick_range_max=st.number_input('The x-axis tick range max number',value=6)
@@ -77,9 +77,10 @@ if st.button('Determine Differential analysis'):
         hover_name=dot_names,
         color_discrete_map={'Up': '#ca0020', 'NS': '#bababa', 'Down': '#0571b0'},
         opacity=1,
-        title=maplot_title, size=marker_size if marker_size else None)
+        title=maplot_title)
 
-     # Add horizontal line at y = 0
+    fig.update_traces(marker_size=sizeofmarker)
+    # Add horizontal line at y = 0
     fig.add_shape(  go.layout.Shape(type="line",
          xref="paper",
          x0=0,
