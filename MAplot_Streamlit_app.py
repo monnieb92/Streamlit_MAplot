@@ -38,7 +38,7 @@ xax_tick_font=st.number_input('The x-axis tick font size',value=10)
 sizeofmarker=st.number_input('The dot size',value=2)
 figure_width=st.number_input('The width of the figure',value=500)
 figure_height=st.number_input('The height of the figure',value=500)
-#xax_tick_range_max=st.number_input('The x-axis tick range max number',value=6)
+xax_tick_range_max=st.number_input('The x-axis tick range max number if not log transforming baseMean',value=6)
 fontnames=st.text_area('The name of the fonts, Arial or Arial Black',value='Arial Black')
 logchoice=st.selectbox("Pick a choice for the transformation of the baseMean", ["log2", "log10", "None"])
 # Correct GitHub raw CSV file URL
@@ -90,12 +90,12 @@ if st.button('Determine Differential analysis'):
          line=dict(color="black", width=1),
          ))
         # Set log scale for x-axis
-if logchoice == 'None':
-    fig.update_xaxes(type="log",showgrid=False,
+    if logchoice == 'None'
+        fig.update_xaxes(type="log",showgrid=False,
                 ticks="outside", tickvals=[0, 1, 10, 100, 1000, 10000,100000,1000000],
                 dtick=1,range=[-1,xax_tick_range_max])
-else:
-    None
+    else:
+        None
 
         # Set y-axis limits and ticks
     fig.update_yaxes(ticks="outside", tickvals=list(range(yax_min, (yax_max+1),2)), range=[yax_min, yax_max],dtick=2,showgrid=False)
