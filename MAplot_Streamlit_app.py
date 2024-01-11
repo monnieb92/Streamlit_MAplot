@@ -119,12 +119,12 @@ if st.button('Determine Differential analysis'):
             title_x=0.4,
             title_font=dict(family=fontnames,color='black',size=titlesize_font))
     
-    fig.update_xaxes(showline=False, linewidth=2, linecolor='black',
+    fig.update_xaxes(showline=True, linewidth=2, linecolor='black',showgrid=False,
                  ticks="outside",tickson="boundaries",ticklen=5,tickcolor="black",
                  tickfont=dict(family=fontnames,color='black',size=xax_tick_font),
                  title_font=dict(family=fontnames,color='black',size=xax_font))
 
-    fig.update_yaxes(showline=True, linewidth=2, linecolor='black',
+    fig.update_yaxes(showline=True, linewidth=2, linecolor='black',showgrid=False,
                  ticks="outside",tickson="boundaries",ticklen=5,tickcolor="black",
                  tickfont=dict(family=fontnames,color='black',size=xax_tick_font),
                  title_font=dict(family=fontnames,color='black',size=yax_font))
