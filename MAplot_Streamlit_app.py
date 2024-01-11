@@ -81,6 +81,14 @@ if st.button('Determine Differential analysis'):
         title=maplot_title)
 
     fig.update_traces(marker_size=sizeofmarker)
+
+        # Set log scale for x-axis
+    if logchoice == 'None':
+        fig.update_xaxes(type="log",showgrid=False,
+                ticks="outside", tickvals=[0, 1, 10, 100, 1000, 10000,100000,1000000],
+                dtick=1,range=[-1,xax_tick_range_max])
+    else:
+        fig.update_layout(xaxis=dict(showgrid=False))
     # Add horizontal line at y = 0
 if logchoice == 'log2':
     minxaxis = np.log2(result_table_df['baseMean']).min() 
@@ -96,14 +104,6 @@ if logchoice == 'log2':
          y1=0,
          line=dict(color="black", width=1),
          ))
-        # Set log scale for x-axis
-    if logchoice == 'None':
-        fig.update_xaxes(type="log",showgrid=False,
-                ticks="outside", tickvals=[0, 1, 10, 100, 1000, 10000,100000,1000000],
-                dtick=1,range=[-1,xax_tick_range_max])
-    else:
-        fig.update_layout(xaxis=dict(showgrid=False))
-
         # Set y-axis limits and ticks
     fig.update_yaxes(ticks="outside", tickvals=list(range(yax_min, (yax_max+1),2)), range=[yax_min, yax_max],dtick=2,showgrid=False)
 
