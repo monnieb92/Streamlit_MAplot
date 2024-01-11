@@ -100,7 +100,7 @@ if st.button('Determine Differential analysis'):
 
         # Update layout settings
     fig.update_layout(showlegend=True,
-            xaxis_title="log2(Base Mean)" if logchoice == 'log2' else "log10(Base Mean)",
+            xaxis_title="log2(Base Mean)" if logchoice == 'log2' else "log10(Base Mean)" if logchoice == 'log10' else "Base Mean",
             yaxis_title="log2 Fold Change",
             width=figure_width,
             height=figure_height,
