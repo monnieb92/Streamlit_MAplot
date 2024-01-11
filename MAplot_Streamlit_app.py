@@ -113,28 +113,17 @@ if st.button('Determine Differential analysis'):
             title_x=0.4,
             title_font=dict(family=fontnames,color='black',size=titlesize_font))
     # Adding ranges to my x and y axis 
-    if logchoice == 'log2':
-        minxaxis = np.log2(result_table_df['baseMean']).min()
-    elif logchoice == 'log10':
-        minxaxis = np.log10(result_table_df['baseMean']).min() 
-    else: 
-        minxaxis = result_table_df['baseMean'].min()
-    if logchoice == 'log2':
-        maxxaxis = np.log2(result_table_df['baseMean']).max()
-    elif logchoice == 'log10':
-        maxxaxis = np.log10(result_table_df['baseMean']).max() 
-    else: 
-        maxxaxis = result_table_df['baseMean'].max()    
+ 
     fig.update_xaxes(showline=True, linewidth=2, linecolor='black',showgrid=False,
                  ticks="outside",tickson="boundaries",ticklen=5,tickcolor="black",
                  tickfont=dict(family=fontnames,color='black',size=xax_tick_font),
                  title_font=dict(family=fontnames,color='black',size=xax_font),
-                 range=[minxaxis,maxxaxis])
+                 zeroline=False)
 
     fig.update_yaxes(showline=True, linewidth=2, linecolor='black',showgrid=False,
                  ticks="outside",tickson="boundaries",ticklen=5,tickcolor="black",
                  tickfont=dict(family=fontnames,color='black',size=xax_tick_font),
-                 title_font=dict(family=fontnames,color='black',size=yax_font))
+                 title_font=dict(family=fontnames,color='black',size=yax_font),zeroline=False)
 
 
         # Show the plot
