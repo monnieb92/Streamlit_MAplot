@@ -90,12 +90,12 @@ if st.button('Determine Differential analysis'):
     else:
         fig.update_layout(xaxis=dict(showgrid=False))
     # Add horizontal line at y = 0
-if logchoice == 'log2':
-    minxaxis = np.log2(result_table_df['baseMean']).min() 
-elif logchoice == 'log10':
-    minxaxis = np.log10(result_table_df['baseMean']).min() 
-else: 
-    minxaxis = result_table_df['baseMean'].min()
+    if logchoice == 'log2':
+        minxaxis = np.log2(result_table_df['baseMean']).min() 
+    elif logchoice == 'log10':
+        minxaxis = np.log10(result_table_df['baseMean']).min() 
+    else: 
+        minxaxis = result_table_df['baseMean'].min()
     fig.add_shape(  go.layout.Shape(type="line",
          xref="paper",
          x0=minxaxis,
