@@ -78,7 +78,7 @@ if st.button('Determine Differential analysis'):
         color_discrete_map={'Up': '#ca0020', 'NS': '#bababa', 'Down': '#0571b0'},
         opacity=1,
         title=maplot_title,
-        size=marker_size)
+        size='marker_size')
 
      # Add horizontal line at y = 0
     fig.add_shape(  go.layout.Shape(type="line",
