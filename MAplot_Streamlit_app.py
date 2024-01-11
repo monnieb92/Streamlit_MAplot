@@ -96,7 +96,7 @@ if st.button('Determine Differential analysis'):
                 ticks="outside", tickvals=[0, 1, 10, 100, 1000, 10000,100000,1000000],
                 dtick=1,range=[-1,xax_tick_range_max])
     else:
-        None
+        fig.update_layout(xaxis=dict(showgrid=False))
 
         # Set y-axis limits and ticks
     fig.update_yaxes(ticks="outside", tickvals=list(range(yax_min, (yax_max+1),2)), range=[yax_min, yax_max],dtick=2,showgrid=False)
