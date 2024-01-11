@@ -88,7 +88,7 @@ if st.button('Determine Differential analysis'):
                 ticks="outside", tickvals=[0, 1, 10, 100, 1000, 10000,100000,1000000],
                 dtick=1,range=[-1,xax_tick_range_max])
     else:
-        fig.update_layout(xaxis=dict(showgrid=False))
+        fig.update_xaxes(showgrid=False)
     # Add horizontal line at y = 0
     #if logchoice == 'log2':
      #   minxaxis = np.log2(result_table_df['baseMean']).min()
