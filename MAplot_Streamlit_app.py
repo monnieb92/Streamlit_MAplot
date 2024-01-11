@@ -90,7 +90,7 @@ if st.button('Determine Differential analysis'):
          line=dict(color="black", width=1),
          ))
         # Set log scale for x-axis
-    if logchoice == 'None'
+    if logchoice == 'None':
         fig.update_xaxes(type="log",showgrid=False,
                 ticks="outside", tickvals=[0, 1, 10, 100, 1000, 10000,100000,1000000],
                 dtick=1,range=[-1,xax_tick_range_max])
