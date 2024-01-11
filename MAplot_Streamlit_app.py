@@ -70,7 +70,7 @@ if st.button('Determine Differential analysis'):
     st.download_button('Download Result Table CSV',data=result_table_csv, file_name=filename_csv)
    
     fig = px.scatter(result_table_df,
-        x=logchoice('baseMean',)
+        x=logchoice('baseMean'),
         y='log2FoldChange',
         color='category',
         hover_name=dot_names,
