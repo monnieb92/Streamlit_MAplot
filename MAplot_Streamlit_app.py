@@ -92,7 +92,7 @@ if st.button('Determine Differential analysis'):
     # Add horizontal line at y = 0
 if logchoice == 'log2':
     minxaxis = np.log2(result_table_df['baseMean']).min() 
-    if logchoice == 'log10': 
+    elif logchoice == 'log10': 
         minxaxis = np.log10(result_table_df['baseMean']).min() 
     else: 
         minxaxis = result_table_df['baseMean'].min()
