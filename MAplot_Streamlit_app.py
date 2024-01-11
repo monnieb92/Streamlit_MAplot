@@ -90,7 +90,7 @@ if st.button('Determine Differential analysis'):
             minxaxis = result_table_df['baseMean'].min()
     fig.add_shape(  go.layout.Shape(type="line",
          xref="paper",
-         x0=min_xaxis,
+         x0=minxaxis,
          x1=1,
          y0=0,
          y1=0,
