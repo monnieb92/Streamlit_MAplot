@@ -99,7 +99,7 @@ if st.button('Determine Differential analysis'):
     fig.add_shape(  go.layout.Shape(type="line",
          xref="paper",
          x0=0,
-         x1=0,
+         x1=1,
          y0=0,
          y1=0,
          line=dict(color="black", width=1),
@@ -119,7 +119,7 @@ if st.button('Determine Differential analysis'):
             title_x=0.4,
             title_font=dict(family=fontnames,color='black',size=titlesize_font))
     
-    fig.update_xaxes(showline=True, linewidth=2, linecolor='black',
+    fig.update_xaxes(showline=False, linewidth=2, linecolor='black',
                  ticks="outside",tickson="boundaries",ticklen=5,tickcolor="black",
                  tickfont=dict(family=fontnames,color='black',size=xax_tick_font),
                  title_font=dict(family=fontnames,color='black',size=xax_font))
